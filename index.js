@@ -10,6 +10,10 @@ function replaceText(word, replacement, text) {
   // Створення регулярного виразу для пошуку слова з флагом 'g' (глобальний пошук).
   // Використання методу `replace` регулярного виразу для заміни слова на фразу у тексті.
   // Повернення заміненого тексту.
+  let y = word, flags = "g";
+  let x = new RegExp(y, flags);
+  let j = text.replace(x, replaceText);
+  return j;
 }
 
 // Перевірка
@@ -35,6 +39,9 @@ function checkWord(word, text) {
   // Створення регулярного виразу для пошуку слова з флагом 'i' (регістронезалежний пошук).
   // Використання методу `test` регулярного виразу для перевірки наявності слова у тексті.
   // Повернення результату перевірки.
+  const regex = /work/i;
+  let result = regex.test(text);
+  return result;
 }
 
 // Перевірка
@@ -74,6 +81,10 @@ function countEmails(str) {
   // Використання методу `match` для отримання всіх збігів регулярного виразу.
   // Підрахунок кількості email-адрес.
   // Повернення кількості email-адрес.
+  const regex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g;
+  const a = [...regexmathc(str)];
+  const x = a ? a.length : 0;
+  return x;
 }
 
 // Перевірка
@@ -125,6 +136,13 @@ function checkRegexFlags(regex) {
   // Отримуємо всі флаги регулярного виразу.
   // Перевіряємо наявність флагів 'g' та 'm' за допомогою методу `includes`.
   // Повертаємо  - true, якщо флаги 'g' та 'm' присутні, інакше - false
+  let flag = regex.flags;
+if (flag.flags.includes('g') && flag.flags.includes('m')) {
+  return true;
+}
+else {
+  return false;
+}
 }
 
 // Перевірка
@@ -148,6 +166,10 @@ function replaceWordOccurrences(str, word, newWord) {
   // Створюємо регулярний вираз зі словом, використовуючи флаг 'g' для глобального пошуку всіх входжень.
   // Заміняємо всі входження слова у рядку на нове слово.
   // Повертаємо результат
+  let a = word, flags = "g";
+  let x = new RegExp(a, flags);
+  const result = str.replace(x, newWord);
+  return result;
 }
 
 // Перевірка
@@ -159,6 +181,7 @@ console.log(
     "fox",
     "cat"
   )
+
 );
 // Виведе The quick brown cat jumps over the lazy dog. The cat is quick.
 
@@ -177,6 +200,12 @@ function checkFlags(regex) {
   // Отримуємо вихідний код регулярного виразу за допомогою властивості `source`.
   // Додаємо вихідний код до масиву
   // Повертаємо масив використаних флагів.
+  let a = [];
+  if (regex.ignoreCase) {
+    a.push('i');
+  }
+  a.push(regex.source);
+  return a;
 }
 
 // Приклад використання:
@@ -199,6 +228,19 @@ function checkRegexMethods(regex) {
   // Перевіряємо, чи використовується метод `multiline`.
   // Перевіряємо, чи використовується метод `sticky`.
   // Повертаємо масив використаних методів.
+  let a = [];
+  if (regex.dotAll) {
+    usedMethods.push('dotAll');
+  }
+
+  if (regex.multiline) {
+    usedMethods.push('multiline');
+  }
+
+  if (regex.sticky) {
+    usedMethods.push('sticky');
+  }
+  return a;
 }
 
 // Приклад використання:
@@ -219,6 +261,9 @@ console.log(checkRegexMethods(/test/msy));
 function findWord(str, word) {
   // Створення регулярного виразу для пошуку слова.
   // Використання методу `search` для пошуку першого входження слова.
+  const a = word, flags = "g";
+  const regex = new RegExp(a, flags);
+  let result = str.search(regex);
 }
 
 // Приклад використання:
