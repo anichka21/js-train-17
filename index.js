@@ -9,9 +9,8 @@
 function replaceText(word, replacement, text) {
   // Створення регулярного виразу для пошуку слова з флагом 'g' (глобальний пошук).
   // Використання методу `replace` регулярного виразу для заміни слова на фразу у тексті.
-  // Повернення заміненого тексту.
-  let y = word, flags = "g";
-  let x = new RegExp(y, flags);
+  // Повернення заміненого тексту
+  let x = new RegExp(word, "g");
   let j = text.replace(x, replaceText);
   return j;
 }
@@ -39,7 +38,7 @@ function checkWord(word, text) {
   // Створення регулярного виразу для пошуку слова з флагом 'i' (регістронезалежний пошук).
   // Використання методу `test` регулярного виразу для перевірки наявності слова у тексті.
   // Повернення результату перевірки.
-  const regex = /work/i;
+  const regex = /word/i;
   let result = regex.test(text);
   return result;
 }
@@ -82,7 +81,7 @@ function countEmails(str) {
   // Підрахунок кількості email-адрес.
   // Повернення кількості email-адрес.
   const regex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g;
-  const a = [...regexmathc(str)];
+  const a = [...regex.match(str)];
   const x = a ? a.length : 0;
   return x;
 }
@@ -137,13 +136,13 @@ function checkRegexFlags(regex) {
   // Перевіряємо наявність флагів 'g' та 'm' за допомогою методу `includes`.
   // Повертаємо  - true, якщо флаги 'g' та 'm' присутні, інакше - false
   let flag = regex.flags;
-if (flag.flags.includes('g') && flag.flags.includes('m')) {
-  return true;
-}
-else {
-  return false;
-}
-}
+  if (flag.includes('g') && flag.includes('m')) {
+    return true;
+  }
+  else {
+    return false;
+  }
+  }
 
 // Перевірка
 
@@ -201,7 +200,7 @@ function checkFlags(regex) {
   // Додаємо вихідний код до масиву
   // Повертаємо масив використаних флагів.
   let a = [];
-  if (regex.ignoreCase) {
+  if (regex.includes('i')) {
     a.push('i');
   }
   a.push(regex.source);
@@ -261,8 +260,7 @@ console.log(checkRegexMethods(/test/msy));
 function findWord(str, word) {
   // Створення регулярного виразу для пошуку слова.
   // Використання методу `search` для пошуку першого входження слова.
-  const a = word, flags = "g";
-  const regex = new RegExp(a, flags);
+  let regex = /word/;
   let result = str.search(regex);
 }
 
