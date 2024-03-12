@@ -11,7 +11,7 @@ function replaceText(word, replacement, text) {
   // Використання методу `replace` регулярного виразу для заміни слова на фразу у тексті.
   // Повернення заміненого тексту
   let x = new RegExp(word, "g");
-  let j = text.replace(x, replaceText);
+  let j = text.replace(x, replacement);
   return j;
 }
 
@@ -38,7 +38,7 @@ function checkWord(word, text) {
   // Створення регулярного виразу для пошуку слова з флагом 'i' (регістронезалежний пошук).
   // Використання методу `test` регулярного виразу для перевірки наявності слова у тексті.
   // Повернення результату перевірки.
-  const regex = /word/i;
+  const regex = new RegExp(work, 'i');
   let result = regex.test(text);
   return result;
 }
@@ -80,9 +80,9 @@ function countEmails(str) {
   // Використання методу `match` для отримання всіх збігів регулярного виразу.
   // Підрахунок кількості email-адрес.
   // Повернення кількості email-адрес.
-  const regex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g;
-  const a = [...regex.match(str)];
-  const x = a ? a.length : 0;
+  const regex = /\((.*?)\)/g;
+  const matches = str.matchAll(regex);
+  const x = matches ? matches.length : 0;
   return x;
 }
 
